@@ -6,7 +6,9 @@ tags:
   - obsidian
   - hugo
 ---
+```
 💡 此文章主要是紀錄建站過程，不是教學。
+```
 
 目標：
 - 在obsidian寫作；博客網站展示
@@ -133,6 +135,3 @@ docker pull hugomods/hugo:exts
 生產環境部屬時 選`hugomods/hugo:nginx`
 [使用 Nginx 鏡像部署 - CI/CD - 文檔 - Hugo Docker 鏡像 | HugoMods](https://docker.hugomods.com/zh-hant/docs/ci-cd/nginx/)
 
-
-
-test
