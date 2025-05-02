@@ -132,3 +132,7 @@ docker pull hugomods/hugo:exts
 ```
 生產環境部屬時 選`hugomods/hugo:nginx`
 [使用 Nginx 鏡像部署 - CI/CD - 文檔 - Hugo Docker 鏡像 | HugoMods](https://docker.hugomods.com/zh-hant/docs/ci-cd/nginx/)
+
+
+
+test
