@@ -11,17 +11,17 @@ tags:
 💡 此文章主要是紀錄建站過程，不是教學。
 ```
 
-## 目標
+# 目標
 - 在obsidian寫作；博客網站展示
 - 一鍵發布文章（自動化流程）
 
-## 前置要求
+# 前置要求
 - 筆者使用macOS
 - 已安裝好docker
 - 遠端Linux主機的SSH
 - 遠端Linux主機公開的port端口
 
-## 建置網站
+# 建置網站
 ```
 💡 影片中將網站部屬至Hostinger；本文將使用自己主機部屬。
 ```
@@ -30,7 +30,7 @@ tags:
 [I started a blog.....in 2024 (why you should too) - YouTube](https://www.youtube.com/watch?v=dnE7c0ELEH8)。
 影片中的內容這裡就不重複撰寫了，直接看他的筆記 [My Insane Blog Pipeline :: Terminal](https://blog.networkchuck.com/posts/my-insane-blog-pipeline/)。
 
-### 主要步驟
+## 主要步驟
 1. Obsidian準備好一個資料夾（放置要公開的文章）
 2. 安裝hugo
 3. 產生hugo專案檔案
@@ -39,7 +39,7 @@ tags:
 6. 編寫自動化流程腳本
 7. 部屬至主機
 
-## 我的設定
+# 我的設定
 ### 主題
 筆者使用[PaperMod](https://adityatelange.github.io/hugo-PaperMod/)，官網教學推薦使用git submodule安裝
 ```
@@ -124,11 +124,19 @@ else:
 
 一鍵發布腳本：
 - 根據筆者自己的流程修改
-```mermaid
-graph LR
-	A-->B
-```
 
+步驟：
+1. 設定變量
+2. 驗證所需工具
+3. 驗證SSH連線
+4. 驗證路徑已存在
+5. rsync: Obsidian文章 至 公開庫 與 hugo專案
+6. 圖片遷移
+7. hugo建構靜態檔案
+8. 公開庫: git add
+9. 公開庫: git commit
+10. 公開庫: git push
+11. rsync: hugo靜態檔案 至 遠端伺服器
 ```bash
 #!/bin/bash
 set -euo pipefail
@@ -246,4 +254,67 @@ fi
 echo "All done! Site synced, processed, committed, built, and deployed."
 ```
 ## 部屬
-[Host and deploy](https://gohugo.io/host-and-deploy/) 選擇自己適合的方案來部屬，筆者選擇部屬到自己主機上。
+可以參考[Host and deploy](https://gohugo.io/host-and-deploy/) 選擇適合自己的方案來部屬，筆者選擇部屬到自己主機上。
+
+筆者這裡直接用[hugomods提供的nginx映像檔](https://docker.hugomods.com/docs/ci-cd/nginx/)來部屬
+```
+services:
+  hugo-site:
+    image: hugomods/hugo:nginx
+    restart: unless-stopped
+    ports:
+      - "${HUGO_PORT:-80}:80"
+    volumes:
+      - ./nginx/nginx-custom.conf:/etc/nginx/conf.d/default.conf:ro # 可選：自定義 Nginx 配置
+      - ./hugo_logs:/var/log/nginx # 持久化 Nginx 日誌
+      - ./public:/site
+    environment:
+      - NGINX_ENTRYPOINT_QUIET_LOGS=1 # 減少 Nginx 啟動時的日誌輸出
+    networks:
+      - hugo_network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:80"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 256M
+        reservations:
+          memory: 128M
+
+  # 可選：添加 Watchtower 自動更新容器
+  watchtower:
+    image: containrrr/watchtower
+    restart: always
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: --interval 86400 --cleanup # 每天檢查一次更新
+    networks:
+      - hugo_network
+
+networks:
+  hugo_network:
+    driver: bridge
+```
+
+
+## 支援Mermaid顯示
+```sh
+nano layouts/_default/_markup/render-codeblock-mermaid.html
+```
+```html
+<pre class="mermaid">
+  {{ .Inner | htmlEscape | safeHTML }}
+</pre>
+{{ .Page.Store.Set "hasMermaid" true }}
+```
+
+這樣網站就可以渲染圖表了，如下圖：
+```mermaid
+graph TD
+	A-->B
+```
