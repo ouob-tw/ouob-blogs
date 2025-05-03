@@ -341,3 +341,35 @@ nano layouts/_default/_markup/render-codeblock-mermaid.html
 graph TD
 	A-->B
 ```
+
+## 加入Giscus留言板
+👍 Giscus 開源免費，依託GitHub Discussion。
+👎 disqus 有廣告，可能拖慢網頁載入速度，需要設定延後載入。
+
+安照官網[giscus](https://github.com/apps/giscus)教學設定即可，也可看看其他人寫的教學：
+[给Hugo PaperMod增加giscus评论系统 | 图南博客](https://tunan.org/posts/add-comment-system-to-hugopapermo/)
+[使用 giscus 给博客添加评论功能 | Ljhero's blog](https://ljhero.github.io/posts/2022-05-02-support-comment-using-giscus/)
+[Overview of Hugo/PaperMod, modifying PaperMod, and comparison to al-folio | Jesse Wei](https://jessewei.dev/blog/2023/papermod/#comments)
+
+```sh
+mkdir -p layouts/partials/ &&
+nano layouts/partials/comments.html
+```
+```sh
+<script src="https://giscus.app/client.js"
+        data-repo="ouob-tw/ouob-blogs"
+        data-repo-id="xxxxxxxxxxxx"
+        data-category="Announcements"
+        data-category-id="xxxxxxxxxxxx"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="preferred_color_scheme"
+        data-lang="zh-TW"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
+```
