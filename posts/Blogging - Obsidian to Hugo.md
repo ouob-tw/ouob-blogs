@@ -302,29 +302,42 @@ networks:
 ```
 
 
-## 支援Mermaid顯示
-```sh
+## 支援Mermaid流程圖顯示
+看了[Code block render hooks](https://gohugo.io/render-hooks/code-blocks/)，但還是不確定怎麼改
+
+先用claude的回答來改，有更好的辦法可以告訴我🤗
+
+此腳本會查看頁面是否有mermaid的代碼塊，如果有就插入mermaid腳本顯示
+```
+mkdir -p layouts/_default/_markup/ &&
 nano layouts/_default/_markup/render-codeblock-mermaid.html
 ```
 ```html
-<pre class="mermaid">
-  {{ .Inner | htmlEscape | safeHTML }}
-</pre>
-{{ .Page.Store.Set "hasMermaid" true }}
-```
-```
-nano layouts/_default/baseof.html
-```
-```html
-{{ if .Store.Get "hasMermaid" }}
-  <script type="module">
-    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.esm.min.mjs';
-    mermaid.initialize({ startOnLoad: true });
-  </script>
+{{ if eq .Type "mermaid" }}
+<div class="mermaid">{{- .Inner | safeHTML }}</div>
+{{ if not (.Page.Scratch.Get "mermaid") }} {{
+.Page.Scratch.Set "mermaid" true }}
+<script>
+  if (window.mermaidLoaded === undefined) {
+    window.mermaidLoaded = true;
+    document.write(`
+      <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"><\/script>
+      <script>
+        mermaid.initialize({
+          startOnLoad: true, 
+          theme: "dark",
+          align: "center"
+        });
+      <\/script>
+    `);
+  }
+</script>
+{{ end }} {{ else }}
+<pre><code class="{{ .Type }}">{{ .Inner }}</code></pre>
 {{ end }}
 ```
 
-這樣網站就可以渲染圖表了，如下圖：
+這樣網站就可以渲染流程圖了，如下：
 ```mermaid
 graph TD
 	A-->B
