@@ -312,6 +312,17 @@ nano layouts/_default/_markup/render-codeblock-mermaid.html
 </pre>
 {{ .Page.Store.Set "hasMermaid" true }}
 ```
+```
+nano layouts/_default/baseof.html
+```
+```html
+{{ if .Store.Get "hasMermaid" }}
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ startOnLoad: true });
+  </script>
+{{ end }}
+```
 
 這樣網站就可以渲染圖表了，如下圖：
 ```mermaid
