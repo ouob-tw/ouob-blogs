@@ -25,7 +25,9 @@ tags:
 ```
 
 主要參考此影片來建置：
+
 [I started a blog.....in 2024 (why you should too) - YouTube](https://www.youtube.com/watch?v=dnE7c0ELEH8)。
+
 影片中的內容這裡就不重複撰寫了，直接看他的筆記 [My Insane Blog Pipeline :: Terminal](https://blog.networkchuck.com/posts/my-insane-blog-pipeline/)。
 
 ## 主要步驟
@@ -71,7 +73,7 @@ Git submodule 是 Git 版本控制系統中的一個功能，它允許你將一�
 ## 自動化腳本
 筆者在影片提供的腳本基礎上修改。
 
-圖片遷移腳本：
+### 圖片遷移腳本
 - 修改了regex，支援png、jpg
 - 顯示Markdown檔案修改統計與圖片數量
 ```python
@@ -121,7 +123,7 @@ else:
     print(f"Copied {count} images to the Hugo static/images directory.")
 ```
 
-一鍵發布腳本：
+### 一鍵發布腳本
 - 根據筆者自己的流程修改
 
 步驟：
@@ -136,6 +138,7 @@ else:
 9. 公開庫: git commit
 10. 公開庫: git push
 11. rsync: hugo靜態檔案 至 遠端伺服器
+
 ```bash
 #!/bin/bash
 set -euo pipefail
@@ -302,11 +305,9 @@ networks:
 
 
 ## 支援Mermaid流程圖顯示
-看了[Code block render hooks](https://gohugo.io/render-hooks/code-blocks/)，但還是不確定怎麼改
+看了[Code block render hooks](https://gohugo.io/render-hooks/code-blocks/)，但還是不確定怎麼改，就先用claude回答的來改，有更好的辦法可以告訴我🤗
 
-先用claude的回答來改，有更好的辦法可以告訴我🤗
-
-此腳本會查看頁面是否有mermaid的代碼塊，如果有就插入mermaid腳本顯示
+此腳本會查看頁面是否有mermaid的代碼塊，如果有就插入mermaid渲染腳本
 ```
 mkdir -p layouts/_default/_markup/ &&
 nano layouts/_default/_markup/render-codeblock-mermaid.html
@@ -344,13 +345,18 @@ graph TD
 
 ## 加入Giscus留言板
 👍 Giscus 開源免費，依託GitHub Discussion。
+
 👎 disqus 有廣告，可能拖慢網頁載入速度，需要設定延後載入。
 
 安照官網[giscus](https://github.com/apps/giscus)教學設定即可，也可看看其他人寫的教學：
+
 [给Hugo PaperMod增加giscus评论系统 | 图南博客](https://tunan.org/posts/add-comment-system-to-hugopapermo/)
+
 [使用 giscus 给博客添加评论功能 | Ljhero's blog](https://ljhero.github.io/posts/2022-05-02-support-comment-using-giscus/)
+
 [Overview of Hugo/PaperMod, modifying PaperMod, and comparison to al-folio | Jesse Wei](https://jessewei.dev/blog/2023/papermod/#comments)
 
+首先，確保`config.toml`裡面`[params]`的 `comments = true`
 ```sh
 mkdir -p layouts/partials/ &&
 nano layouts/partials/comments.html
