@@ -258,7 +258,7 @@ echo "All done! Site synced, processed, committed, built, and deployed."
 ## 部屬
 可以參考[Host and deploy](https://gohugo.io/host-and-deploy/) 選擇適合自己的方案來部屬，筆者選擇部屬到自己主機上。
 
-筆者這裡直接用[hugomods提供的nginx映像檔](https://docker.hugomods.com/docs/ci-cd/nginx/)來部屬
+筆者這裡直接用[hugomods提供的nginx映像檔](https://docker.hugomods.com/docs/ci-cd/nginx/)來部屬：
 ```
 services:
   hugo-site:
@@ -308,7 +308,7 @@ networks:
 看了[Code block render hooks](https://gohugo.io/render-hooks/code-blocks/)，但還是不確定怎麼改，就先用claude回答的來改，有更好的辦法可以告訴我🤗
 
 此腳本會查看頁面是否有mermaid的代碼塊，如果有就插入mermaid渲染腳本
-```
+```bash
 mkdir -p layouts/_default/_markup/ &&
 nano layouts/_default/_markup/render-codeblock-mermaid.html
 ```
