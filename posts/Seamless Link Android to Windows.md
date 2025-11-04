@@ -15,10 +15,9 @@ tags:
 
 但是！這兩個系統權限都足夠開放、自由，我們完全可以自己寫腳本，實現自動解鎖手機，媲美iPhone mirroring的絲滑體驗！😎
 
-## 前置要求與設置
-- Android, Windows各一台
-- 電腦的 Link to Windows 配對好手機
-- 手機到 Play Store 下載好 MacroDroid 軟體
+## 前置要求
+- 電腦：Link to Windows 配對好手機
+- 手機：Play Store 搜尋並安裝 MacroDroid
 
 ## Link to Windows 遠控手機流程
 ```mermaid
