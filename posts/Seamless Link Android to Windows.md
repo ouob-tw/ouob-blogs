@@ -6,10 +6,14 @@ tags:
   - android
   - windows
 ---
-## 目標
-媲美 iPhone mirroring，在手機端無須手動確認與解鎖即可內網遠程操控。
 
-Window和Android是不同廠商應該有安全性上的考量，大概只能自己寫腳本自動化這個流程了😅。
+用過iPhone mirroring的都知道，在Mac上控制iPhone不需要手動解鎖手機，整個連接的體驗可說是十分絲滑。（這就是封閉系統的好處嗎😆
+
+然而，PC陣營就沒有這個待遇了。
+
+因為Window和Android是不同廠商，彼此有安全性上的考量，所以可能永遠也不會有自動解鎖的功能。
+
+但是！這兩個系統權限都足夠開放、自由，我們完全可以自己寫腳本，實現自動解鎖手機，媲美iPhone mirroring的絲滑體驗！😎
 
 ## 前置要求與設置
 - Android, Windows各一台
