@@ -65,6 +65,7 @@ Git submodule 是 Git 版本控制系統中的一個功能，它允許你將一�
 ---
 
 作者推薦使用yaml來設定，筆者還是習慣使用toml
+
 使用 [YAML to TOML](https://transform.tools/yaml-to-toml) 來轉換格式
 
 如果是複製 [PaperMod 的範例設定檔](https://adityatelange.github.io/hugo-PaperMod/posts/papermod/papermod-installation/#sample-configyml)，  
@@ -350,11 +351,9 @@ graph TD
 
 安照官網[giscus](https://github.com/apps/giscus)教學設定即可，也可看看其他人寫的教學：
 
-[给Hugo PaperMod增加giscus评论系统 | 图南博客](https://tunan.org/posts/add-comment-system-to-hugopapermo/)
-
-[使用 giscus 给博客添加评论功能 | Ljhero's blog](https://ljhero.github.io/posts/2022-05-02-support-comment-using-giscus/)
-
-[Overview of Hugo/PaperMod, modifying PaperMod, and comparison to al-folio | Jesse Wei](https://jessewei.dev/blog/2023/papermod/#comments)
+- [给Hugo PaperMod增加giscus评论系统 | 图南博客](https://tunan.org/posts/add-comment-system-to-hugopapermo/)
+- [使用 giscus 给博客添加评论功能 | Ljhero's blog](https://ljhero.github.io/posts/2022-05-02-support-comment-using-giscus/)
+- [Overview of Hugo/PaperMod, modifying PaperMod, and comparison to al-folio | Jesse Wei](https://jessewei.dev/blog/2023/papermod/#comments)
 
 首先，確保`config.toml`裡面`[params]`的 `comments = true`
 ```sh

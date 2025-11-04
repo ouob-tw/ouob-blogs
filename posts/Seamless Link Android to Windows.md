@@ -38,7 +38,10 @@ flowchart LR
 ## 設定流程
 以下是基於小米手機，不同品牌可能不竟相同。
 
-完整腳本：
+腳本檔案：米粉可以直接抄作業了😇
+![[Auto_confirm_Link_to_windows.macro]]
+![[Unlock_phone.ablock]]
+腳本截圖：
 ![[Screenshot_2025-07-13-00-18-28-770_com.arlosoft.macrodroid.jpg|400]]
 ![[Screenshot_2025-07-13-00-17-28-157_com.arlosoft.macrodroid-edit 1.jpg|400]]
 
