@@ -3,7 +3,6 @@ title: 問題：新版edge瀏覽器無法指定數體大小數值，只有固定
 date: 2025-11-06
 draft: true
 tags:
-  - android
   - windows
 ---
 問題：新版edge瀏覽器無法指定數體大小數值，只有固定的選項
