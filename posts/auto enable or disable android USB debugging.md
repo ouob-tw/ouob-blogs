@@ -1,7 +1,7 @@
 ---
 title: 一鍵自動開關USB偵錯模式！
-date: 2025-11-25
-draft: true
+date: 2025-11-27
+draft: false
 tags:
   - android
   - macroDroid
