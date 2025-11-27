@@ -5,6 +5,7 @@ draft: false
 tags:
   - android
   - windows
+  - macroDroid
 ---
 
 用過iPhone mirroring的都知道，在Mac上控制iPhone不需要手動解鎖手機，整個連接的體驗可說是十分絲滑。（這就是封閉系統的好處嗎😆
