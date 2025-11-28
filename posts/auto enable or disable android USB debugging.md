@@ -33,6 +33,7 @@ tags:
 
 總之，先來看看成效！
 
+
 一鍵自動開關USB偵錯模式：
 
 <video width="400" controls>
@@ -47,6 +48,7 @@ tags:
 ![[Screenshot_2025-11-24-00-00-48-225_com.arlosoft.macrodroid-edit.jpg|300]]
 
 開啟網路ADB：
+
 這裡我是把網路偵錯開關直接放到下拉選單，這樣操作更快。
 ![[Screenshot_2025-11-24-00-01-22-603_com.arlosoft.macrodroid.jpg|300]]
 
@@ -54,6 +56,7 @@ tags:
 ![[Screenshot_2025-11-24-00-00-06-980_com.arlosoft.macrodroid-edit.jpg|300]]
 
 這裡用到的大部分功能，在上篇 『自動解鎖Links to Windows』有詳細介紹，所以就不重複撰寫了～ 
+
 
 MacroDroid 系列預計還會寫幾篇，有興趣的可以先追蹤。 
 
